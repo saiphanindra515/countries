@@ -1,0 +1,66 @@
+<div class="container-fluid">
+  <div class="row hgt align-items-center">
+    <div class="col-sm-12 col-md-12 text-light">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+              <div class="display-4 text-center  mb-2">Countries Information Application </div>
+              <div class="text-center"> 
+                 <p style='font-size: 23px'> This site gives you detailed information about various countries.
+                  information displayed in this site is taken from Rest Countries Api.</p>
+        
+              </div>
+              <div class="text-center">
+                <button class="btn btn-primary my-4 py-2 px-3" id='tg' style="letter-spacing: 3px" (click)='load()'>GET STARTED</button>
+              </div>
+              
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<!--regional view-->
+ <div class="container hider mt-5">
+   <div class="row mt-5">
+     <div class="col">
+        <div class="display-4 text-center">All Regions</div>
+        <div class="text-center mt-3" style='font-size:20px'>The world was divided into large regions whose creation began with the denominating and defining of the continents.
+
+            Quite often, this was done from a European point of view.
+            
+            Some names were derived from ancient Greece, which had separated the lands to the east of Asia from those to the west of it.
+            
+            Most continents are divided into regions and sub-regions.
+            
+            Asia, for example, comprises several zones, each of whose characteristics justify its regional status.
+            
+            Generally, a region is a part of the world that is distinguished by one or more characteristics, be they geological, climatic, geographical, cultural or economic.</div>
+            <h5 class="mt-3 text-uppercase"> Select a Region To Know In Detail... </h5>
+     </div>
+     
+   </div>
+   <div class="row mt-5">
+     <div *ngFor='let r of regions' class="col-12 col-md-4">
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="{{r.img}}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{r.name}}</h5>
+          <h6 >Number of Countries : {{r.numberofcountries}}</h6>
+          <p class="card-text"></p>
+
+          <a href="#" class="btn btn-primary" [routerLink]="['/component',r.name]" >All countries</a>
+          
+        </div>
+      </div>
+     </div>
+   </div>
+ </div>
+ 
+ 
+ <div class="my-container">
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+    
+</div>
