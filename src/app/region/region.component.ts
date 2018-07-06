@@ -28,7 +28,7 @@ export class RegionComponent implements OnInit {
       'img':'https://i.ndtvimg.com/i/2018-01/statue-of-liberty_650x400_61516584069.jpg'
     },
     {
-      'name':'Ocenia',
+      'name':'Oceania',
       'numberofcountries':14,
       'img':'http://www.traveller.com.au/content/dam/images/1/1/k/j/n/k/image.gallery.galleryLandscape.620x414.11kg16.png/1459821698905.jpg'
     },
@@ -50,7 +50,7 @@ export class RegionComponent implements OnInit {
       this.loading=true;
      setTimeout(()=>{
       this.unload();
-       },3000)
+       },1000)
      }
    public unload(){
   

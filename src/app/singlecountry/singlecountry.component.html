@@ -1,0 +1,179 @@
+<div class="container ">
+  <div *ngIf="res" class="row">
+    <div class="col">
+      <div class="card mb-3">
+        <img class="img img-fluid" src="{{res[0].flag}}" alt="Card image cap" style="height:40vh">
+        <div class="card-body">
+          <h4 class="card-title">{{res[0].name}}</h4>
+          <h6>Nativename : {{res[0].nativeName}}</h6>
+          <h6>Region : {{res[0].region}}</h6>
+          <h6>subregion : {{res[0].subregion}}</h6>
+          <h6>Area : {{res[0].area}}</h6>
+          <h6>Population : {{res[0].population}}</h6>
+           <p class="card-text"><small class="text-muted"></small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container my-5">
+  <div *ngIf='res' class="row">
+    <div class="col">
+        <div class="card text-center">
+            <div class="card-header">
+            
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">CODES</h5>
+              <p class="card-text">The ISO country code are internationally recognized codes that designates for each country and most of the dependent areas a two letter combination or a three letter combination, its like an acronym, that stands for a country. 
+                </p>
+                <h6>alpha2code : {{res[0].alpha2Code}}</h6>
+                <h6>alpha3code : {{res[0].alpha3Code}}</h6>
+                <h6>callingCodes : {{res[0].callingCodes}}</h6>
+                <h6>numericCode : {{res[0].numericCode}}</h6>
+                
+
+
+            </div>
+            <div class="card-footer text-muted">
+              {{res[0].name}}
+            </div>
+          </div>
+
+    </div>
+  </div>
+</div>
+<div class="container my-5">
+    <div *ngIf='res' class="row">
+      <div class="col">
+          <div class="card text-center">
+              <div class="card-header">
+              
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Region</h5>
+                <p class="card-text">
+                  </p>
+                  <h6>region : {{res[0].region}}</h6>
+                  <h6>subregion : {{res[0].subregion}}</h6>
+                  <h6>regionalblocs : </h6>
+                  <h6 *ngFor="let bloc of res[0].regionalBlocs">
+                  Acronym :  {{bloc.acronym}} <br>
+                  Name : {{bloc.name}}
+                  </h6>
+                  
+  
+              </div>
+              <div class="card-footer text-muted">
+                {{res[0].name}}
+              </div>
+            </div>
+  
+      </div>
+    </div>
+  </div>
+
+  <div class="container my-5">
+      <div *ngIf='res' class="row">
+        <div class="col">
+            <div class="card text-center">
+                <div class="card-header">
+                
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title"></h5>
+                  <p class="card-text">
+                    </p>
+                    <h6>Cioc : {{res[0].cioc}}</h6>
+                  
+                    <h6>demonym : {{res[0].demonym}}</h6>
+                    <h6>gini : {{res[0].gini}}</h6>
+                   
+                    
+                    <h6>latlng :</h6>
+                    <h6 *ngFor="let lat of res[0].latlng">
+                      {{lat}}
+                    </h6>
+                    <h6>ToplevelDomain :</h6>
+                    <h6 *ngFor="let top of res[0].topLevelDomain">
+                      {{top}}
+                    </h6>
+                </div>
+                <div class="card-footer text-muted">
+                    {{res[0].name}}
+                  </div>
+              </div>
+    
+        </div>
+      </div>
+    </div>
+
+
+    <div *ngIf="res" class="container">
+      <div class="row">
+        <div class="col-md-4">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Borders</h5>
+                  
+                  <h6 *ngFor="let b of res[0].borders">{{b}}</h6>
+                  
+                  
+                </div>
+                <div class="card-footer text-muted">
+                    {{res[0].name}}
+                  </div>
+              </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Languages</h5>
+                  
+                 
+                    <h6 *ngFor="let l of res[0].languages"> 
+                        <div *ngIf="l.iso639_1">
+                        <a  [routerLink]="['/component/lang',l.iso639_1]">name : {{l.name}}</a></div></h6>
+                  
+                  
+                </div>
+                <div class="card-footer text-muted">
+                    {{res[0].name}}
+                  </div>
+              </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Currencies</h5>
+                  
+                  <h6 *ngFor="let cur of res[0].currencies">
+                   
+                 <div *ngIf="cur.code"> <a [routerLink]="['/component/cur',cur.code]">  Name : {{cur.name}} </a></div>  <br>
+                 Code : {{cur.code}}  <br>  
+                 Symbol : {{cur.symbol}}    <br>
+                
+                  </h6>
+                  
+                  
+                </div>
+                <div class="card-footer text-muted">
+                    {{res[0].name}}
+                  </div>
+              </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 my-5 text-center">
+          <button class="btn btn-primary"(click)="goback()">Go Back</button>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="my-container">
+        <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+        
+      </div>
